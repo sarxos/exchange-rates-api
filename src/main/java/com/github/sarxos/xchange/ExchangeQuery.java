@@ -3,6 +3,7 @@ package com.github.sarxos.xchange;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -44,6 +45,12 @@ public class ExchangeQuery {
 	}
 
 	public Collection<ExchangeRate> get() throws ExchangeException {
+
+		// return empty list if input is empty
+
+		if (from.isEmpty()) {
+			return Collections.emptyList();
+		}
 
 		// first, try Yahoo
 
