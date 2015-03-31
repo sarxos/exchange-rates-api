@@ -13,7 +13,7 @@
   <packaging>jar</packaging>
 
   <name>Exchange Rates API</name>
-  <description>API to access forex exchange rates via Yahoo YQL or OpenExchangeRates JSON</description>
+  <description>Java API to access forex exchange rates via Yahoo YQL with fallback to OpenExchangeRates JSON</description>
   <url>https://github.com/sarxos/exchange-rates-api</url>
   <inceptionYear>2015</inceptionYear>
 

@@ -39,16 +39,16 @@ public class FetchOpenExchangeImpl extends Fetch {
 	 */
 	private static final Logger LOG = LoggerFactory.getLogger(FetchOpenExchangeImpl.class);
 
+	private static final String KEY = "openexchangerates.org.apikey";
 	private static final String HOST = "openexchangerates.org";
 	private static final String ENDPOINT = "/api/latest.json";
 	private static final ObjectMapper MAPPER = new ObjectMapper();
 
 	private static HttpUriRequest buildRequest() {
 
-		String key = "openexchangerates.org.apikey";
-		Object apikey = ExchangeCache.getParameter(key);
+		Object apikey = ExchangeCache.getParameter(KEY);
 		if (apikey == null) {
-			throw new IllegalStateException("API key has not been found under " + key + " parameter");
+			throw new IllegalStateException("API key has not been found under " + KEY + " parameter");
 		}
 
 		URI uri = null;
