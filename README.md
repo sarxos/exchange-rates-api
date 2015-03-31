@@ -1,6 +1,6 @@
 # exchange-rates-api
 
-Java API to access forex exchange rates via Yahoo YQL with fallback to OpenExchangeRates JSON.
+Java API to access forex exchange rates via Yahoo YQL with fallback to OpenExchangeRates JSON. Response from these services is cached for the one hour, and then, request is re-executed to get the newest rates.
 
 ## Configuration
 
@@ -16,10 +16,43 @@ _(note to replace "apikey" with your own key API key obtained from openexchanger
 ## Example
 
 ```java
-ExchangeCache cache = new ExchangeCache("USD"); // define base currency
-ExchangeRate rate = cache.getRate("CAD");
-int amount = 1000;
-System.out.println("The " + amount + " CAD = " + rate.convert(10000) + " in USD");
+import java.math.BigDecimal;
+
+import com.github.sarxos.xchange.ExchangeCache;
+import com.github.sarxos.xchange.ExchangeException;
+import com.github.sarxos.xchange.ExchangeRate;
+
+
+public class ConvertCadToUsd {
+
+  public static void main(String[] args) throws ExchangeException, InterruptedException {
+
+    // change apikey to your own one
+    ExchangeCache.setParameter("openexchangerates.org.apikey", "apikey");
+
+    // define base currency
+    ExchangeCache cache = new ExchangeCache("USD");
+
+    // get the CAD to USD exchange rate
+    ExchangeRate rate = cache.getRate("CAD");
+
+    // convert
+    BigDecimal amount = new BigDecimal("1000");
+    BigDecimal converted = rate.convert(amount);
+
+    System.out.println("The " + amount + " CAD = " + converted + " in USD");
+  }
+}
+```
+
+## Maven
+
+```xml
+<dependency>
+  <groupId>com.github.sarxos</groupId>
+  <artifactId>exchange-rates-api</artifactId>
+  <version>0.2</version>
+</dependency>
 ```
 
 ## License
