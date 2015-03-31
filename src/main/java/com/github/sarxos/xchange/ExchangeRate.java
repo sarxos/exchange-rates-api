@@ -19,8 +19,12 @@ public class ExchangeRate {
 		this.rate = new BigDecimal("1.0").divide(new BigDecimal(rate), 8, RoundingMode.HALF_EVEN);
 	}
 
-	public BigDecimal convert(int cents) {
-		return rate.multiply(new BigDecimal(cents));
+	public BigDecimal convert(int value) {
+		return rate.multiply(new BigDecimal(value));
+	}
+
+	public BigDecimal convert(BigDecimal value) {
+		return rate.multiply(value);
 	}
 
 	public String getFrom() {
