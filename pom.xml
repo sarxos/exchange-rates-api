@@ -1,0 +1,93 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>com.github.sarxos</groupId>
+    <artifactId>oss-parent</artifactId>
+    <version>1</version>
+  </parent>
+
+  <artifactId>exchange-rates-api</artifactId>
+  <version>0.1</version>
+  <packaging>jar</packaging>
+
+  <name>Exchange Rates API</name>
+  <description>API to access forex exchange rates via Yahoo YQL or OpenExchangeRates JSON</description>
+  <url>https://github.com/sarxos/exchange-rates-api</url>
+  <inceptionYear>2015</inceptionYear>
+
+  <scm>
+    <connection>scm:git:git@github.com:sarxos/exchange-rates-api.git</connection>
+    <developerConnection>scm:git:git@github.com:sarxos/exchange-rates-api.git</developerConnection>
+    <url>git@github.com:sarxos/exchange-rates-api.git</url>
+    <tag>HEAD</tag>
+  </scm>
+
+  <issueManagement>
+    <system>GitHub Issues Manager</system>
+    <url>https://github.com/sarxos/exchange-rates-api/issues</url>
+  </issueManagement>
+
+  <developers>
+    <developer>
+      <id>sarxos</id>
+      <name>Bartosz Firyn</name>
+      <url>https://github.com/sarxos</url>
+      <timezone>+1</timezone>
+    </developer>
+  </developers>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>2.5.1</version>
+        <configuration>
+          <source>1.7</source>
+          <target>1.7</target>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.apache.httpcomponents</groupId>
+      <artifactId>httpclient</artifactId>
+      <version>4.3.6</version>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>1.7.5</version>
+    </dependency>
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-classic</artifactId>
+      <version>1.1.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+      <version>3.3.2</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-io</artifactId>
+      <version>1.3.2</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-collections4</artifactId>
+      <version>4.0</version>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>2.3.2</version>
+    </dependency>
+  </dependencies>
+
+</project>
