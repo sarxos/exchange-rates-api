@@ -29,6 +29,13 @@
     <url>https://github.com/sarxos/exchange-rates-api/issues</url>
   </issueManagement>
 
+  <distributionManagement>
+    <repository>
+      <id>sarxos-ftp-repo</id>
+      <url>ftp://ftp.sarxos.pl/maven2</url>
+    </repository>
+  </distributionManagement>
+
   <developers>
     <developer>
       <id>sarxos</id>
