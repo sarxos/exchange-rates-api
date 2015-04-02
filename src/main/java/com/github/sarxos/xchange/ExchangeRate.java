@@ -10,12 +10,14 @@ public class ExchangeRate {
 	private final String from;
 	private final String to;
 	private final String symbol;
+	private final String name;
 	private final BigDecimal rate;
 
 	public ExchangeRate(String forex, String rate) {
 		this.to = forex.substring(0, 3);
 		this.from = forex.substring(3, 6);
 		this.symbol = from + to;
+		this.name = from + "/" + to;
 		this.rate = new BigDecimal("1.0").divide(new BigDecimal(rate), 8, RoundingMode.HALF_EVEN);
 	}
 
@@ -39,6 +41,10 @@ public class ExchangeRate {
 		return symbol;
 	}
 
+	public String getName() {
+		return name;
+	}
+
 	public BigDecimal getRate() {
 		return rate;
 	}
@@ -58,6 +64,6 @@ public class ExchangeRate {
 
 	@Override
 	public String toString() {
-		return "1 " + getFrom() + " = " + getRate() + " " + getTo() + " (" + getSymbol() + ")";
+		return getName() + " " + getRate();
 	}
 }

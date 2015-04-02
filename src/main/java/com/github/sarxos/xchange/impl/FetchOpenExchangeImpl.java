@@ -70,6 +70,8 @@ public class FetchOpenExchangeImpl extends Fetch {
 
 	private static String fetch() throws ExchangeException {
 
+		LOG.trace("Fetching OpenExchangeRates latest JSON");
+
 		HttpUriRequest request = buildRequest();
 
 		String json = null;

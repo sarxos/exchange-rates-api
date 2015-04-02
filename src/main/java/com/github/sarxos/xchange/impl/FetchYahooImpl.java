@@ -69,7 +69,11 @@ public class FetchYahooImpl extends Fetch {
 
 	private static String fetch(Iterator<String> symbols) throws ExchangeException {
 
-		Collection<String> quoted = CollectionUtils.collect(symbols, new Transformer<String, String>() {
+		Collection<String> iterable = IteratorUtils.toList(symbols);
+
+		LOG.debug("Fetching symbols {}", iterable);
+
+		Collection<String> quoted = CollectionUtils.collect(iterable, new Transformer<String, String>() {
 
 			@Override
 			public String transform(String input) {
@@ -103,6 +107,9 @@ public class FetchYahooImpl extends Fetch {
 		if (json == null) {
 			throw new ExchangeException("Unable to get JSON from Yahoo API");
 		}
+
+		LOG.debug("Successfully requested symbols from Yahoo Exchange YQL API");
+		LOG.trace("Response is {}", json);
 
 		return json;
 	}

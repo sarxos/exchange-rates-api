@@ -54,6 +54,8 @@ public class ExchangeQuery {
 
 		// first, try Yahoo
 
+		LOG.debug("Trying Yahoo Exchange YQL API");
+
 		try {
 			return new FetchYahooImpl().get(to, from);
 		} catch (ExchangeException e) {
@@ -62,6 +64,8 @@ public class ExchangeQuery {
 
 		// then, if Yahoo failed, try OpenExchange
 
+		LOG.debug("Trying OpenExchangeRates API");
+
 		try {
 			return new FetchOpenExchangeImpl().get(to, from);
 		} catch (ExchangeException e) {
@@ -69,15 +73,5 @@ public class ExchangeQuery {
 		}
 
 		return null;
-	}
-
-	public static void main(String[] args) throws ExchangeException {
-
-		for (ExchangeRate r : new ExchangeQuery()
-			.from("EUR", "JPY", "BGN", "PLN", "MXN", "ZAR", "LVL", "ZMK", "GBP")
-			.to("GBP")
-			.get()) {
-			System.out.println(r);
-		}
 	}
 }

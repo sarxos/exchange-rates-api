@@ -33,6 +33,9 @@ public class ExchangeCache {
 
 		@Override
 		public void run() {
+
+			LOG.info("Starting exchange cache updater");
+
 			while (true) {
 				try {
 					throttle();
@@ -81,13 +84,20 @@ public class ExchangeCache {
 	}
 
 	private void cache(ExchangeRate rate) {
+
+		LOG.debug("Caching exchange rate {}", rate);
+
 		currencies.add(rate.getFrom());
 		cache.put(rate.getFrom(), rate);
 	}
 
 	private synchronized void init() {
 
-		LOG.info("Initializing forex data for {}", currencies);
+		if (currencies.isEmpty()) {
+			LOG.info("No currencies to update");
+		} else {
+			LOG.info("Initializing forex data for {}", currencies);
+		}
 
 		Collection<ExchangeRate> rates = null;
 		try {
@@ -110,7 +120,7 @@ public class ExchangeCache {
 
 	private ExchangeRate preload(String currency) throws ExchangeException {
 
-		LOG.warn("Preloading currency {}", currency);
+		LOG.warn("Preloading {} to {} exchange rate", currency, base);
 
 		Collection<ExchangeRate> rates = new ExchangeQuery()
 			.from(Arrays.asList(currency))
