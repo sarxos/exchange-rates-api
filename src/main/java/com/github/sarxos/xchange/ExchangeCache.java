@@ -127,11 +127,19 @@ public class ExchangeCache {
 			.to(base)
 			.get();
 
-		// get first and the only one
+		// check if null (no network connectivity)
+
+		if (rates == null) {
+			throw new ExchangeException("Cache was not able to communicate with the supported exchanges, this is most likely caused by the network connectivity issue");
+		}
+
+		// check if empty (currency not supported by the exchange)
 
 		if (rates.isEmpty()) {
 			throw new ExchangeException("The " + currency + " currency seems to be unsupported");
 		}
+
+		// get first and the only one
 
 		ExchangeRate rate = rates.iterator().next();
 
