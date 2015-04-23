@@ -154,6 +154,8 @@ public class FetchYahooImpl extends Fetch {
 		// }, ... etc, 2 more records here
 		// ]}}}
 
+		LOG.trace("Reading JSON tree: {}", json);
+
 		JsonNode root = MAPPER.readTree(json);
 		if (root == null) {
 			throw new IOException("Invalid JSON received: " + json);
@@ -178,19 +180,25 @@ public class FetchYahooImpl extends Fetch {
 
 		if (rates.isArray()) {
 			for (int i = 0; i < rates.size(); i++) {
-				exchangerates.add(process(rates.get(i)));
+				process(exchangerates, rates.get(i));
 			}
 		} else {
-			exchangerates.add(process(rates));
+			process(exchangerates, rates);
 		}
 
 		return exchangerates;
 	}
 
-	private static ExchangeRate process(JsonNode node) {
+	private static void process(Set<ExchangeRate> exchangerates, JsonNode node) {
+
 		String symbol = node.get("id").asText();
 		String value = node.get("Rate").asText();
-		return new ExchangeRate(symbol, value);
+
+		if ("N/A".equalsIgnoreCase(value)) {
+			LOG.debug("The rate for {} has not been found", symbol);
+		} else {
+			exchangerates.add(new ExchangeRate(symbol, value));
+		}
 	}
 
 	public Collection<ExchangeRate> get(String to, Collection<String> from) throws ExchangeException {

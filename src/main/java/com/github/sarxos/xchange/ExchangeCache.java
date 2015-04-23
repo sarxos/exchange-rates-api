@@ -129,6 +129,10 @@ public class ExchangeCache {
 
 		// get first and the only one
 
+		if (rates.isEmpty()) {
+			throw new ExchangeException("The " + currency + " currency seems to be unsupported");
+		}
+
 		ExchangeRate rate = rates.iterator().next();
 
 		// put it into the cache

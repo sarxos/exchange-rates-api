@@ -2,6 +2,25 @@
 
 Java API to access forex exchange rates via Yahoo YQL with fallback to OpenExchangeRates JSON. Response from these services is cached for the one hour, and then, request is re-executed to get the newest rates.
 
+The following official ISO 4217 symbols are **not** supported:
+
+* BOV (Bolivian Mvdol, funds code),
+* CHE (WIR Euro, complementary currency),
+* CHW (WIR Franc, complementary currency),
+* COU (Unidad de Valor Real (UVR), funds code),
+* SSP (South Sudanese pound)
+* USN (United States dollar (next day), funds code),
+* UYI (Uruguay Peso en Unidades Indexadas (URUIURUI), funds code),
+* XBA (European Composite Unit (EURCO), bond market unit),
+* XBB (European Monetary Unit (E.M.U.-6), bond market unit),
+* XBC (European Unit of Account 9 (E.U.A.-9), bond market unit)
+* XBD (European Unit of Account 17 (E.U.A.-17), bond market unit),
+* XSU (SUCRE from Unified System for Regional Compensation),
+* XTS (test currency),
+* XUA (ADB Unit of Account from African Development Bank),
+* XXX (no currency).
+
+
 ## Configuration
 
 The [openexchangerates.org](https://openexchangerates.org/) is used as a fallback for the default Yahoo YQL API, so it will be used in most of the cases, but to make use of it when Yahoo fails, the following property must be set before it is launched:

@@ -39,7 +39,8 @@ public class FetchOpenExchangeImpl extends Fetch {
 	 */
 	private static final Logger LOG = LoggerFactory.getLogger(FetchOpenExchangeImpl.class);
 
-	private static final String KEY = "openexchangerates.org.apikey";
+	public static final String KEY = "openexchangerates.org.apikey";
+
 	private static final String HOST = "openexchangerates.org";
 	private static final String ENDPOINT = "/api/latest.json";
 	private static final ObjectMapper MAPPER = new ObjectMapper();
@@ -118,6 +119,8 @@ public class FetchOpenExchangeImpl extends Fetch {
 		// "ANG": 1.78948,
 		// "AOA": 107.97125,
 		// ... etc for more symbols
+
+		LOG.trace("Reading JSON tree: {}", json);
 
 		JsonNode root = MAPPER.readTree(json);
 		if (root == null) {
