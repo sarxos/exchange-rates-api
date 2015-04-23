@@ -9,7 +9,7 @@
   </parent>
 
   <artifactId>exchange-rates-api</artifactId>
-  <version>0.4-SNAPSHOT</version>
+  <version>0.4</version>
   <packaging>jar</packaging>
 
   <name>Exchange Rates API</name>
@@ -21,7 +21,7 @@
     <connection>scm:git:git@github.com:sarxos/exchange-rates-api.git</connection>
     <developerConnection>scm:git:git@github.com:sarxos/exchange-rates-api.git</developerConnection>
     <url>git@github.com:sarxos/exchange-rates-api.git</url>
-    <tag>HEAD</tag>
+    <tag>exchange-rates-api-0.4</tag>
   </scm>
 
   <issueManagement>
