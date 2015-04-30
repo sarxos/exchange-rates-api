@@ -47,9 +47,12 @@ public class FetchOpenExchangeImpl extends Fetch {
 
 	private static HttpUriRequest buildRequest() {
 
-		Object apikey = ExchangeCache.getParameter(KEY);
+		Object apikey = System.getProperty(KEY);
 		if (apikey == null) {
-			throw new IllegalStateException("API key has not been found under " + KEY + " parameter");
+			apikey = ExchangeCache.getParameter(KEY);
+			if (apikey == null) {
+				throw new IllegalStateException("API key has not been found under " + KEY + " parameter");
+			}
 		}
 
 		URI uri = null;
