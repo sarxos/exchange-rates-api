@@ -1,3 +1,7 @@
+# IMPORTANT NOTE!
+
+Yahoo YQL API has been discontinued and it's not working any more!
+
 # exchange-rates-api
 
 Java API to access forex exchange rates via Yahoo YQL with fallback to OpenExchangeRates JSON. Response from these services is cached for the one hour, and then, request is re-executed to get the newest rates.
